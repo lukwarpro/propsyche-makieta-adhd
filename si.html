@@ -1,0 +1,706 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diagnoza integracji sensorycznej w Bydgoszczy – makieta Grok · Propsyche</title>
+<meta name="description" content="Makieta redakcyjna: diagnoza SI od 2. roku życia. Dwie ścieżki – 2–11 lat (850 zł) i od 12. lat (800 zł). Opinia w cenie. Nie jest na produkcji.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --font-sans: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --font-display: "Fraunces", "Times New Roman", serif;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { font-family: var(--font-sans); background: #f2ece2; color: #1c2a38; }
+img { max-width: 100%; height: auto; }
+.adhd-page {
+  --adhd-paper: #f2ece2;
+  --adhd-sheet: #fbf8f2;
+  --adhd-ink: #1c2a38;
+  --adhd-muted: #5a6370;
+  --adhd-faint: #5f5850;
+  --adhd-line: #d6cec0;
+  --adhd-teal: #0c656c;
+  --adhd-teal-soft: #dcecee;
+  --adhd-navy: #1d3557;
+  --adhd-navy-deep: #101c2b;
+  --adhd-warn: #8a3d28;
+  background: var(--adhd-paper);
+  color: var(--adhd-ink);
+  min-height: 100dvh;
+  padding-bottom: 4.5rem;
+  font-family: var(--font-sans);
+}
+
+.adhd-skip { position: absolute; left: -999px; top: 0; }
+.adhd-skip:focus {
+  left: 0.75rem; top: 0.75rem; z-index: 80;
+  background: var(--adhd-navy-deep); color: var(--adhd-paper);
+  padding: 0.5rem 0.75rem;
+}
+
+.adhd-draft {
+  display: flex; flex-wrap: wrap; gap: 0.35rem 0.6rem;
+  align-items: center; justify-content: center;
+  padding: 0.55rem 1rem;
+  background: var(--adhd-navy-deep); color: #d7deea;
+  font-size: 0.75rem; letter-spacing: 0.04em; text-transform: uppercase;
+}
+.adhd-draft a { color: #f4efe6; text-decoration: underline; text-underline-offset: 3px; }
+.adhd-draft-sep { opacity: 0.45; }
+
+.adhd-top {
+  display: flex; flex-wrap: wrap; align-items: center;
+  justify-content: space-between; gap: 0.75rem 1.25rem;
+  padding: 0.9rem 1.25rem;
+  border-bottom: 1px solid var(--adhd-line);
+  background: var(--adhd-sheet);
+}
+.adhd-logo img { display: block; height: 36px; width: auto; }
+.adhd-top-meta { margin: 0; font-size: 0.8rem; color: var(--adhd-muted); }
+.adhd-top-phone {
+  font-size: 0.9rem; font-weight: 600; color: var(--adhd-navy);
+  text-decoration: none; letter-spacing: 0.01em;
+}
+.adhd-top-phone:hover { color: var(--adhd-teal); }
+
+.adhd-layout {
+  display: grid; grid-template-columns: 1fr;
+  max-width: 1180px; margin: 0 auto; padding: 0 1.1rem 3rem;
+}
+
+.adhd-toc { display: none; }
+.adhd-toc-kicker {
+  margin: 0 0 0.75rem; font-size: 0.7rem;
+  letter-spacing: 0.16em; text-transform: uppercase; color: var(--adhd-faint);
+}
+.adhd-toc ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.15rem; }
+.adhd-toc a {
+  display: flex; gap: 0.65rem; align-items: baseline;
+  padding: 0.4rem 0; color: var(--adhd-muted); text-decoration: none;
+  font-size: 0.9rem; border-bottom: 1px solid transparent;
+}
+.adhd-toc a:hover { color: var(--adhd-ink); }
+.adhd-toc span {
+  font-variant-numeric: tabular-nums; font-size: 0.72rem;
+  letter-spacing: 0.08em; color: var(--adhd-faint);
+}
+
+.adhd-hero { padding: 2.4rem 0 1.5rem; }
+.adhd-kicker {
+  margin: 0 0 0.7rem; font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase; color: var(--adhd-teal);
+}
+.adhd-hero h1, .adhd-section h2, .adhd-cta h2 {
+  font-family: var(--font-display); font-weight: 500;
+  letter-spacing: -0.03em; line-height: 1.12;
+  color: var(--adhd-navy); margin: 0 0 0.9rem;
+}
+.adhd-hero h1 { font-size: clamp(2rem, 5.4vw, 3.35rem); max-width: 18ch; }
+.adhd-lead, .adhd-dek {
+  max-width: 58ch; font-size: 1.05rem; line-height: 1.65;
+  color: var(--adhd-muted); margin: 0 0 1.35rem;
+}
+.adhd-actions { display: flex; flex-wrap: wrap; gap: 0.65rem; margin-bottom: 1.2rem; }
+.adhd-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 48px; padding: 0.7rem 1.2rem;
+  font-size: 0.95rem; font-weight: 600; text-decoration: none;
+  border-radius: 4px; border: 1px solid transparent;
+  transition: background-color 160ms var(--ease-out), color 160ms var(--ease-out), border-color 160ms var(--ease-out);
+}
+.adhd-btn-primary { background: var(--adhd-navy); color: #f6f1e8; }
+.adhd-btn-primary:hover { background: var(--adhd-navy-deep); color: #f6f1e8; }
+.adhd-btn-ghost { background: transparent; color: var(--adhd-navy); border-color: var(--adhd-line); }
+.adhd-btn-ghost:hover { border-color: var(--adhd-navy); }
+.adhd-facts { display: flex; flex-wrap: wrap; gap: 0.45rem 0.5rem; margin: 0 0 1rem; padding: 0; list-style: none; }
+.adhd-facts li {
+  font-size: 0.8rem; color: var(--adhd-muted);
+  border: 1px solid var(--adhd-line); background: var(--adhd-sheet);
+  padding: 0.35rem 0.7rem;
+}
+.adhd-child, .adhd-caption, .adhd-more, .adhd-note {
+  font-size: 0.9rem; line-height: 1.55; color: var(--adhd-muted);
+}
+.adhd-child a, .adhd-more a, .adhd-section a {
+  color: var(--adhd-teal); font-weight: 600; text-decoration: none;
+}
+.adhd-child a:hover, .adhd-more a:hover, .adhd-section a:hover {
+  text-decoration: underline; text-underline-offset: 3px;
+}
+
+.adhd-section { padding: 2.6rem 0; border-top: 1px solid var(--adhd-line); scroll-margin-top: 1.25rem; }
+.adhd-section h2 { font-size: clamp(1.55rem, 3vw, 2.1rem); max-width: 22ch; }
+.adhd-section h3, .adhd-sub {
+  font-family: var(--font-display); font-weight: 500; font-size: 1.15rem;
+  color: var(--adhd-navy); margin: 0 0 0.4rem;
+}
+.adhd-section p { margin: 0 0 0.85rem; line-height: 1.65; color: var(--adhd-muted); }
+.adhd-sub { margin-top: 1.8rem; }
+
+.adhd-paths, .adhd-day, .adhd-tools, .adhd-warn, .adhd-grid4, .adhd-grid3, .adhd-split, .adhd-rel {
+  display: grid; gap: 1rem;
+}
+.adhd-path, .adhd-day article, .adhd-tools article, .adhd-warn article,
+.adhd-grid4 article, .adhd-grid3 article, .adhd-sym, .adhd-note, .adhd-rel a {
+  background: var(--adhd-sheet); border: 1px solid var(--adhd-line); padding: 1.25rem 1.2rem;
+}
+.adhd-path-mark { border-color: var(--adhd-navy); }
+.adhd-path-kicker {
+  margin: 0 0 0.35rem !important; font-size: 0.7rem !important;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--adhd-teal) !important; font-weight: 600;
+}
+.adhd-path-price {
+  font-variant-numeric: tabular-nums; font-weight: 600;
+  color: var(--adhd-ink) !important; margin-bottom: 0.7rem !important;
+}
+.adhd-path ul, .adhd-sym, .adhd-not { list-style: none; margin: 0 0 1rem; padding: 0; }
+.adhd-path li, .adhd-sym li, .adhd-not li {
+  padding: 0.45rem 0; border-top: 1px solid var(--adhd-line);
+  font-size: 0.92rem; color: var(--adhd-ink);
+}
+.adhd-path li:first-child, .adhd-sym li:first-child, .adhd-not li:first-child { border-top: 0; }
+.adhd-path a { display: inline-block; margin-top: 0.4rem; }
+.adhd-path-jump {
+  display: block; margin-top: 0.65rem; padding: 0; border: 0; background: none;
+  font: inherit; font-size: 0.85rem; font-weight: 600; color: var(--adhd-teal);
+  cursor: pointer; text-decoration: none;
+}
+.adhd-path-jump:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+.adhd-media { aspect-ratio: 16 / 9; background: var(--adhd-navy-deep); overflow: hidden; }
+.adhd-media img { width: 100%; height: 100%; display: block; object-fit: cover; }
+
+.adhd-tabs { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0 0 1.1rem; }
+.adhd-tabs button {
+  min-height: 44px; padding: 0.5rem 1rem;
+  border: 1px solid var(--adhd-line); background: transparent;
+  color: var(--adhd-muted); font: inherit; font-weight: 600; font-size: 0.9rem;
+}
+.adhd-tabs button.is-on { background: var(--adhd-navy); border-color: var(--adhd-navy); color: #f6f1e8; }
+
+.adhd-steps { list-style: none; margin: 0 0 1rem; padding: 0; border-left: 1px solid var(--adhd-line); }
+.adhd-steps li {
+  display: grid; grid-template-columns: 3.2rem 1fr; gap: 0.85rem;
+  padding: 0 0 1.35rem 1.1rem; position: relative;
+}
+.adhd-step-n {
+  font-variant-numeric: tabular-nums; font-size: 0.8rem;
+  letter-spacing: 0.08em; color: var(--adhd-faint); padding-top: 0.2rem;
+}
+.adhd-step-who {
+  font-size: 0.7rem !important; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--adhd-teal) !important; font-weight: 600; margin-bottom: 0.2rem !important;
+}
+.adhd-step-meta { font-size: 0.85rem !important; color: var(--adhd-ink) !important; font-weight: 600; }
+
+.adhd-warn article { border-left: 3px solid var(--adhd-warn); }
+.adhd-callout {
+  background: var(--adhd-sheet); border: 1px solid var(--adhd-line);
+  border-left: 3px solid var(--adhd-teal);
+  padding: 1rem 1.1rem; font-size: 0.95rem; line-height: 1.6; color: var(--adhd-ink);
+  margin: 1rem 0 0;
+}
+.adhd-x { color: var(--adhd-warn); font-weight: 600; margin-right: 0.35rem; }
+
+.adhd-rel a { display: block; text-decoration: none; color: inherit; }
+.adhd-rel a:hover { border-color: var(--adhd-navy); }
+.adhd-rel strong { display: block; color: var(--adhd-navy); margin-bottom: 0.2rem; font-size: 0.95rem; }
+.adhd-rel span { display: block; font-size: 0.85rem; color: var(--adhd-muted); font-weight: 400; }
+
+.adhd-table {
+  width: 100%; border-collapse: collapse; font-size: 0.92rem;
+  background: var(--adhd-sheet); margin: 0 0 1.6rem;
+}
+.adhd-table th, .adhd-table td {
+  text-align: left; padding: 0.85rem 0.7rem;
+  border-bottom: 1px solid var(--adhd-line); vertical-align: top;
+}
+.adhd-table th {
+  font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--adhd-faint); font-weight: 600;
+}
+.adhd-table td span { display: block; color: var(--adhd-faint); font-size: 0.78rem; margin-top: 0.15rem; }
+.adhd-table td:last-child { font-variant-numeric: tabular-nums; font-weight: 600; white-space: nowrap; }
+.adhd-table .adhd-sum td {
+  background: var(--adhd-teal-soft); border-bottom: 0; font-weight: 600; color: var(--adhd-ink);
+}
+
+.adhd-faq details { border-top: 1px solid var(--adhd-line); padding: 0.85rem 0; }
+.adhd-faq details:last-child { border-bottom: 1px solid var(--adhd-line); }
+.adhd-faq summary {
+  cursor: pointer; font-weight: 600; color: var(--adhd-navy);
+  list-style: none; padding-right: 1.5rem; position: relative;
+}
+.adhd-faq summary::-webkit-details-marker { display: none; }
+.adhd-faq summary::after { content: "+"; position: absolute; right: 0; top: 0; color: var(--adhd-faint); }
+.adhd-faq details[open] summary::after { content: "–"; }
+.adhd-faq details p { margin: 0.65rem 0 0.2rem; }
+
+.adhd-cta { margin-top: 1rem; padding: 2.2rem 1.3rem; background: var(--adhd-navy-deep); color: #d7deea; }
+.adhd-cta h2 { color: #f6f1e8; max-width: 16ch; }
+.adhd-cta p { max-width: 52ch; line-height: 1.65; margin: 0 0 1.2rem; }
+.adhd-cta .adhd-btn-primary { background: var(--adhd-sheet); color: var(--adhd-navy); }
+.adhd-cta .adhd-btn-primary:hover { background: #fff; color: var(--adhd-navy-deep); }
+.adhd-cta .adhd-btn-ghost { color: #f6f1e8; border-color: #3a4a5e; }
+.adhd-cta .adhd-btn-ghost:hover { border-color: #f6f1e8; }
+
+.adhd-foot { padding: 1.4rem 0 2rem; font-size: 0.78rem; line-height: 1.55; color: var(--adhd-faint); }
+.adhd-foot p { margin: 0; max-width: 70ch; }
+
+.adhd-callbar {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
+  display: flex; align-items: center; justify-content: center;
+  min-height: 52px; background: var(--adhd-navy); color: #f6f1e8;
+  font-weight: 600; text-decoration: none;
+  padding: 0.7rem 1rem calc(0.7rem + env(safe-area-inset-bottom));
+}
+
+@media (min-width: 720px) {
+  .adhd-paths, .adhd-tools, .adhd-split, .adhd-rel { grid-template-columns: 1fr 1fr; gap: 1.4rem; align-items: start; }
+  .adhd-day, .adhd-grid3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .adhd-warn, .adhd-grid4 { grid-template-columns: 1fr 1fr; }
+  .adhd-callbar { display: none; }
+  .adhd-page { padding-bottom: 0; }
+}
+@media (min-width: 1024px) {
+  .adhd-layout { grid-template-columns: 168px minmax(0, 1fr); gap: 2.4rem; padding-top: 1.5rem; }
+  .adhd-toc { display: block; position: sticky; top: 1.25rem; align-self: start; }
+  .adhd-hero { padding-top: 1.2rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .adhd-btn, .adhd-top-phone { transition: none; }
+}
+</style>
+</head>
+<body>
+<div class="adhd-page">
+  <a class="adhd-skip" href="#tresc">Przejdź do treści</a>
+  <div class="adhd-draft">
+    <span>Makieta Grok · karta badania · SI</span>
+    <span class="adhd-draft-sep" aria-hidden="true">/</span>
+    <a href="https://htmlpreview.github.io/?https://github.com/lukwarpro/propsyche-makieta-adhd/blob/grok/adhd-dorosli-karta-badania/index.html">ADHD dorosłych</a>
+    <span class="adhd-draft-sep" aria-hidden="true">/</span>
+    <a href="https://app.notion.com/p/3cdc72a6aff38101a541e3a5d6cb26f8">zadanie Coding</a>
+  </div>
+  <header class="adhd-top">
+    <a class="adhd-logo" href="https://pro-psyche.pl/"><img src="https://pro-psyche.pl/assets/logo-propsyche.png" alt="Propsyche" width="160" height="64"></a>
+    <p class="adhd-top-meta">Bydgoszcz · stacjonarnie · od 2. roku życia</p>
+    <a class="adhd-top-phone" href="tel:+48790219220">Rejestracja 790 219 220</a>
+  </header>
+  <div class="adhd-layout">
+    <nav class="adhd-toc" aria-label="Spis sekcji">
+      <p class="adhd-toc-kicker">Protokół</p>
+      <ol>
+        <li><a href="#czym-jest"><span>01</span>Czym jest</a></li>
+        <li><a href="#dla-kogo"><span>02</span>Dla kogo</a></li>
+        <li><a href="#sciezki"><span>03</span>Ścieżki</a></li>
+        <li><a href="#przebieg"><span>04</span>Przebieg</a></li>
+        <li><a href="#cennik"><span>05</span>Cennik</a></li>
+        <li><a href="#faq"><span>06</span>Pytania</a></li>
+      </ol>
+    </nav>
+    <main id="tresc" class="adhd-main">
+      <section class="adhd-hero">
+        <p class="adhd-kicker">Test diagnostyczny</p>
+        <h1>Diagnoza integracji sensorycznej</h1>
+        <p class="adhd-lead">Dziecko unika huśtawki albo nie chce z niej zejść. Metka w bluzce kończy się płaczem, a w szkole „nie usiedzi”. Zanim ktoś zaproponuje terapię SI, warto sprawdzić, czy pod tymi zachowaniami naprawdę leży zaburzenie przetwarzania bodźców.</p>
+        <div class="adhd-actions">
+          <a class="adhd-btn adhd-btn-primary" href="tel:+48790219220">Zadzwoń do rejestracji</a>
+          <a class="adhd-btn adhd-btn-ghost" href="#przebieg">Jak przebiega diagnoza</a>
+        </div>
+        <ul class="adhd-facts">
+          <li>Od 2. roku życia</li>
+          <li>Dwie ścieżki wiekowe</li>
+          <li>850 zł / 800 zł</li>
+          <li>Opinia w cenie</li>
+        </ul>
+        <p class="adhd-child">Kończy się pisemną opinią i omówieniem – nie samą listą wyników. Najpierw diagnoza. Dopiero potem decyzja, czy potrzebna jest terapia, wskazówki do domu, czy inne badanie.</p>
+      </section>
+
+      <section id="czym-jest" class="adhd-section">
+        <p class="adhd-kicker">01 · Narzędzie</p>
+        <h2>Czym jest, a czym nie jest diagnoza SI</h2>
+        <p>Integracja sensoryczna to proces neurologiczny. Mózg odbiera informacje ze wszystkich zmysłów, rozpoznaje je, interpretuje, segreguje i łączy z wcześniejszymi doświadczeniami, żeby powstała reakcja dopasowana do sytuacji – ruchowa albo myślowa.</p>
+        <p>Nie chodzi tylko o wzrok, słuch, smak, węch i dotyk. Równie ważne są zmysł równowagi (układ przedsionkowy) i czucie głębokie (propriocepcja). Gdy ten proces działa nierówno, dziecko bywa nadwrażliwe, niedowrażliwe albo intensywnie „szuka” wrażeń. Wtedy trudności widać przy ubieraniu, jedzeniu, nauce, zabawie i w emocjach.</p>
+        <p>Teorię opisała dr A. Jean Ayres. W Polsce ramy diagnozy i terapii SI wyznacza między innymi Polskie Stowarzyszenie Terapeutów Integracji Sensorycznej (PSTIS).</p>
+        <p>Diagnoza SI odpowiada na pytanie: czy u podłoża zgłaszanych trudności leżą zaburzenia przetwarzania sensorycznego – i jakiego typu. W Propsyche w Bydgoszczy prowadzimy ją u dzieci od 2. roku życia i u młodzieży.</p>
+        <div class="adhd-warn" style="margin-top:1.4rem">
+          <article>
+            <h3>To nie jest uszkodzenie narządu zmysłu</h3>
+            <p>Niedosłuch albo wada wzroku wymagają konsultacji lekarskiej. SI tego nie zastępuje.</p>
+          </article>
+          <article>
+            <h3>To nie jest test na ADHD ani ADOS-2</h3>
+            <p>Zaburzenia przetwarzania sensorycznego mogą współwystępować z ADHD i spektrum autyzmu, ale to osobne rozpoznania i osobne protokoły.</p>
+          </article>
+          <article>
+            <h3>To nie jest automatyczne skierowanie na terapię</h3>
+            <p>Terapię omawiamy tylko wtedy, gdy wyniki i codzienność dziecka to uzasadniają. Czasem wystarczają wskazówki do domu.</p>
+          </article>
+          <article>
+            <h3>To nie jest kwestionariusz z internetu</h3>
+            <p>Według PSTIS diagnozę procesów integracji sensorycznej może przeprowadzić wyłącznie certyfikowany terapeuta SI.</p>
+          </article>
+        </div>
+        <p class="adhd-callout">To nie jest prosta procedura przesiewowa. W Propsyche obowiązuje ten sam standard: certyfikowany terapeuta SI, pisemna opinia i omówienie.</p>
+      </section>
+
+      <section id="dla-kogo" class="adhd-section">
+        <p class="adhd-kicker">02 · Dla kogo</p>
+        <h2>Pojedynczy sygnał nic nie przesądza</h2>
+        <p class="adhd-dek">Sens ma zgłoszenie, gdy kilka z tych obrazów wraca od miesięcy i utrudnia dom, przedszkole albo szkołę.</p>
+        <div class="adhd-grid4">
+          <article>
+            <h3>Dotyk i pielęgnacja</h3>
+            <p>Źle znosi obcinanie włosów i paznokci, mycie twarzy i zębów, czesanie. Metki, szwy, nowe ubrania wywołują burzę. Unika przytulania albo przeciwnie – przytula się zbyt mocno, wpada na ludzi.</p>
+          </article>
+          <article>
+            <h3>Ruch, równowaga, grawitacja</h3>
+            <p>Potyka się częściej niż rówieśnicy, prawie zawsze ma siniaka. Lęk przed oderwaniem stóp od podłoża: schody, drabinka, wysoki stołek. Albo odwrotnie: nie schodzi z huśtawki i karuzeli. Na schodach trzyma się poręczy dłużej niż inne dzieci.</p>
+          </article>
+          <article>
+            <h3>Aktywność, uwaga, szkoła</h3>
+            <p>Nie usiedzi, zmienia pozycję, kładzie głowę na stoliku. Łatwo się rozprasza przy hałasie w tle. Nowe umiejętności ruchowe przychodzą z trudem – rower, piłka, pływanie. Dziwny chwyt ołówka, nożyczek, sztućców; myli strony.</p>
+          </article>
+          <article>
+            <h3>Jedzenie, emocje, młodzież</h3>
+            <p>Wąski zestaw akceptowanych faktur i temperatur. Gwałtowna reakcja przy zmianie planu, nowym miejscu, tłumie. Od 12. lat: unikanie WF-u, chaos w organizacji, rozdrażnienie w hałaśliwej klasie – dlatego w tej grupie nie powtarzamy protokołu przedszkolaka.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="sciezki" class="adhd-section">
+        <p class="adhd-kicker">03 · Wybór ścieżki</p>
+        <h2>Protokół zależy od wieku</h2>
+        <p class="adhd-dek">Narzędzia mają różne normy i inną formułę współpracy z badanym. Nie wiesz, którą wybrać? Zadzwoń – dobierzemy po wieku dziecka.</p>
+        <div class="adhd-paths">
+          <article class="adhd-path adhd-path-mark">
+            <p class="adhd-path-kicker">Ścieżka młodsza</p>
+            <h3>Dzieci od 2. do 11. roku życia</h3>
+            <p class="adhd-path-price">850 zł</p>
+            <p>Wywiad, obserwacja, Testy Południowo-Kalifornijskie, omówienie i opinia. Płacisz za zrealizowane etapy.</p>
+            <ul>
+              <li>Wywiad z rodzicem i kwestionariusz — 150 zł</li>
+              <li>Obserwacja kliniczna, 50 min — 200 zł</li>
+              <li>Testy Południowo-Kalifornijskie, 50 min — 200 zł</li>
+              <li>Omówienie wyników — 150 zł</li>
+              <li>Pisemna opinia — 150 zł</li>
+            </ul>
+            <p class="adhd-note">U najmłodszych, zwłaszcza przed 4. rokiem życia, testy kalifornijskie nie mają pełnych norm. Wtedy większy ciężar spoczywa na wywiadzie, kwestionariuszu i obserwacji klinicznej.</p>
+            <a href="tel:+48790219220">Umów ścieżkę 2–11 lat</a>
+            <button type="button" class="adhd-path-jump" data-path="young">Zobacz przebieg</button>
+          </article>
+          <article class="adhd-path">
+            <p class="adhd-path-kicker">Ścieżka starsza</p>
+            <h3>Dzieci i młodzież od 12. roku życia</h3>
+            <p class="adhd-path-price">800 zł</p>
+            <p>Od dwunastego roku życia badany jest partnerem rozmowy, nie tylko obiektem obserwacji. Testy kalifornijskie nie są tu podstawą – ich normy kończą się wcześniej.</p>
+            <ul>
+              <li>Wywiad z rodzicem i kwestionariusz — 150 zł</li>
+              <li>Rozmowa, próba Schildera, praksja, 1,5 h — 350 zł</li>
+              <li>Omówienie wyników — 150 zł</li>
+              <li>Pisemna opinia — 150 zł</li>
+            </ul>
+            <a href="tel:+48790219220">Umów ścieżkę od 12. lat</a>
+            <button type="button" class="adhd-path-jump" data-path="teen">Zobacz przebieg</button>
+          </article>
+        </div>
+      </section>
+
+      <section id="przebieg" class="adhd-section">
+        <p class="adhd-kicker">04 · Przebieg</p>
+        <h2>Diagnoza krok po kroku</h2>
+        <div class="adhd-tabs" role="tablist" aria-label="Ścieżka wiekowa">
+          <button type="button" role="tab" id="tab-young" aria-controls="panel-young" aria-selected="true" tabindex="0" class="is-on" data-path="young">2–11 lat</button>
+          <button type="button" role="tab" id="tab-teen" aria-controls="panel-teen" aria-selected="false" tabindex="-1" data-path="teen">Od 12. lat</button>
+        </div>
+
+        <div id="panel-young" role="tabpanel" aria-labelledby="tab-young" data-panel="young">
+          <p class="adhd-dek">Cztery bloki. Obserwacja i testy kalifornijskie to osobne spotkania po 50 minut. Omówienie jest z rodzicem.</p>
+          <ol class="adhd-steps">
+            <li>
+              <span class="adhd-step-n">01</span>
+              <div>
+                <p class="adhd-step-who">Rodzic</p>
+                <h3>Wywiad i kwestionariusz</h3>
+                <p class="adhd-step-meta">150 zł</p>
+                <p>Pytamy o ciążę, poród, pierwszy rok życia, kamienie milowe ruchu, mowy i samoobsługi, choroby, sen, jedzenie, przedszkole albo szkołę. Rodzic wypełnia kwestionariusz sensomotoryczny. Warto zabrać wcześniejsze opinie – nie są obowiązkowe, ale skracają drogę.</p>
+              </div>
+            </li>
+            <li>
+              <span class="adhd-step-n">02</span>
+              <div>
+                <p class="adhd-step-who">Dziecko</p>
+                <h3>Obserwacja kliniczna</h3>
+                <p class="adhd-step-meta">50 min · 200 zł</p>
+                <p>Obserwacja swobodnej i kierowanej aktywności oraz próby kliniczne: równowaga, napięcie, gałki oczne, lateralizacja, odruchy, reakcje przedsionkowe.</p>
+              </div>
+            </li>
+            <li>
+              <span class="adhd-step-n">03</span>
+              <div>
+                <p class="adhd-step-who">Dziecko</p>
+                <h3>Testy Południowo-Kalifornijskie</h3>
+                <p class="adhd-step-meta">50 min · 200 zł</p>
+                <p>Jeśli wiek i współpraca pozwalają. Pełne normy głównie od około 4. roku życia – młodsze dzieci badamy wywiadem, kwestionariuszem i obserwacją kliniczną.</p>
+              </div>
+            </li>
+            <li>
+              <span class="adhd-step-n">04</span>
+              <div>
+                <p class="adhd-step-who">Rodzic</p>
+                <h3>Omówienie i opinia</h3>
+                <p class="adhd-step-meta">150 zł + 150 zł</p>
+                <p>Tłumaczymy wyniki językiem codziennym. Pisemna opinia jest w kwocie ścieżki, nie dopłatą „na życzenie”.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+
+        <div id="panel-teen" role="tabpanel" aria-labelledby="tab-teen" data-panel="teen" hidden>
+          <p class="adhd-dek">Trzy bloki. Badany od 12. lat jest partnerem rozmowy. Testy kalifornijskie nie są podstawą – ich normy kończą się wcześniej.</p>
+          <ol class="adhd-steps">
+            <li>
+              <span class="adhd-step-n">01</span>
+              <div>
+                <p class="adhd-step-who">Rodzic</p>
+                <h3>Wywiad i kwestionariusz</h3>
+                <p class="adhd-step-meta">150 zł</p>
+                <p>Ten sam wywiad rozwojowy. U starszych bywa lepiej, gdy ten blok jest bez dziecka.</p>
+              </div>
+            </li>
+            <li>
+              <span class="adhd-step-n">02</span>
+              <div>
+                <p class="adhd-step-who">Młodzież</p>
+                <h3>Rozmowa, próba Schildera, praksja</h3>
+                <p class="adhd-step-meta">1,5 h · 350 zł</p>
+                <p>Rozmowa z badanym, próba Schildera (test wyprostowanych rąk) i zadania oceniające praksję – planowanie motoryczne, także praksja oralna, gdy obraz tego wymaga.</p>
+              </div>
+            </li>
+            <li>
+              <span class="adhd-step-n">03</span>
+              <div>
+                <p class="adhd-step-who">Rodzic</p>
+                <h3>Omówienie i opinia</h3>
+                <p class="adhd-step-meta">150 zł + 150 zł</p>
+                <p>Wnioski w zrozumiałym języku. Nastolatek słyszy, po co przyszedł i co z tego wynika. Opinia pisemna w kwocie 800 zł.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+        <p class="adhd-note">Zwykle kilka spotkań. Omówienie jest z rodzicem. Dziecko nie musi być na wszystkich wizytach.</p>
+      </section>
+
+      <section class="adhd-section">
+        <p class="adhd-kicker">Zakres oceny</p>
+        <h2>Co oceniamy</h2>
+        <p class="adhd-dek">Nie oceniamy inteligencji, nie stawiamy diagnozy psychiatrycznej i nie zastępujemy badania słuchu ani wzroku.</p>
+        <div class="adhd-grid3">
+          <article><h3>Modulacja bodźców</h3><p>Nadwrażliwość, podwrażliwość, poszukiwanie stymulacji.</p></article>
+          <article><h3>Układ przedsionkowy</h3><p>Równowaga i bezpieczeństwo grawitacyjne.</p></article>
+          <article><h3>Propriocepcja</h3><p>Czucie głębokie i napięcie mięśniowe.</p></article>
+          <article><h3>Praksja</h3><p>Planowanie motoryczne – także praksja oralna, gdy obraz tego wymaga.</p></article>
+          <article><h3>Różnicowanie dotykowe</h3><p>Rozpoznawanie wrażeń ze skóry, nie sam „czy lubi przytulanie”.</p></article>
+          <article><h3>Postawa i oczy</h3><p>Koordynacja posturalno-oczna, lateralizacja, praca gałek ocznych.</p></article>
+        </div>
+      </section>
+
+      <section class="adhd-section">
+        <p class="adhd-kicker">Zanim się zapiszesz</p>
+        <h2>Jak przygotować dziecko</h2>
+        <div class="adhd-grid4">
+          <article><h3>Strój i tempo</h3><p>Wygodny strój, który nie krępuje ruchu; łatwo zdjąć buty. Dziecko wypoczęte i najedzone.</p></article>
+          <article><h3>Bez „egzaminu”</h3><p>Raczej: spotkanie, na którym będziemy się ruszać i robić różne zadania. Nie ćwiczcie w domu prób z internetu.</p></article>
+          <article><h3>Nastolatek</h3><p>Krótka, szczera informacja, po co przychodzi i że usłyszy wnioski w zrozumiałym języku.</p></article>
+          <article><h3>Na przerwę</h3><p>Woda i ewentualnie ulubiona przekąska. Chodzi o typowy obraz, nie o „zdany test”.</p></article>
+        </div>
+      </section>
+
+      <section class="adhd-section">
+        <p class="adhd-kicker">Gdy obraz wykracza poza SI</p>
+        <h2>Osobne protokoły, osobna wycena</h2>
+        <p>Trudności sensoryczne często idą w parze z ADHD, spektrum autyzmu, opóźnieniem mowy albo problemami emocjonalnymi. Diagnoza SI tego nie rozstrzyga. Może natomiast pokazać, że warto iść dalej.</p>
+        <p>W tym samym ośrodku można potem umówić diagnozę ADHD u dzieci i młodzieży, badanie ADOS-2, konsultację psychologa dziecięcego albo wizytę u psychiatry dzieci i młodzieży. Rodzic decyduje po omówieniu – nic nie dzieje się „przy okazji”.</p>
+        <p class="adhd-callout">Gdy wynik wskazuje na potrzebę innego specjalisty, przekazanie odbywa się wewnątrz ośrodka. Rodzic nie opowiada historii od początku.</p>
+        <div class="adhd-rel" style="margin-top:1.4rem">
+          <a href="https://pro-psyche.pl/diagnoza-adhd-u-dzieci-i-mlodziezy">
+            <strong>Diagnoza ADHD u dzieci</strong>
+            <span>Gdy uwaga i impulsywność idą w parze z SI</span>
+          </a>
+          <a href="https://pro-psyche.pl/ados-bydgoszcz">
+            <strong>ADOS-2</strong>
+            <span>Obserwacja w kierunku spektrum autyzmu</span>
+          </a>
+          <a href="https://pro-psyche.pl/psycholog-dzieciecy-bydgoszcz">
+            <strong>Psycholog dziecięcy</strong>
+            <span>Konsultacja i dalsza praca z dzieckiem</span>
+          </a>
+          <a href="https://pro-psyche.pl/cennik">
+            <strong>Cennik</strong>
+            <span>Aktualne ceny całego ośrodka</span>
+          </a>
+        </div>
+      </section>
+
+      <section id="cennik" class="adhd-section">
+        <p class="adhd-kicker">05 · Cennik</p>
+        <h2>Ile kosztuje diagnoza SI?</h2>
+        <p class="adhd-dek">Rozbicie na etapy. Opinia jest w kwocie. Świadczenie komercyjne, poza NFZ. Płatność za zrealizowane etapy.</p>
+
+        <h3 class="adhd-sub" style="margin-top:0">Dzieci od 2. do 11. roku życia</h3>
+        <table class="adhd-table">
+          <thead><tr><th>Świadczenie</th><th>Czas</th><th>Cena</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Wywiad z rodzicem + kwestionariusz</strong></td><td>—</td><td>150 zł</td></tr>
+            <tr><td><strong>Obserwacja kliniczna</strong></td><td>50 min</td><td>200 zł</td></tr>
+            <tr><td><strong>Testy Południowo-Kalifornijskie</strong><span>pełne normy głównie od ok. 4. r.ż.</span></td><td>50 min</td><td>200 zł</td></tr>
+            <tr><td><strong>Omówienie</strong></td><td>—</td><td>150 zł</td></tr>
+            <tr><td><strong>Opinia pisemna</strong><span>w kwocie, nie „na życzenie”</span></td><td>—</td><td>150 zł</td></tr>
+            <tr class="adhd-sum"><td><strong>Razem</strong><span>ścieżka 2–11 lat</span></td><td></td><td>850 zł</td></tr>
+          </tbody>
+        </table>
+
+        <h3 class="adhd-sub" style="margin-top:0.4rem">Dzieci i młodzież od 12. roku życia</h3>
+        <table class="adhd-table">
+          <thead><tr><th>Świadczenie</th><th>Czas</th><th>Cena</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Wywiad z rodzicem + kwestionariusz</strong></td><td>—</td><td>150 zł</td></tr>
+            <tr><td><strong>Rozmowa, próba Schildera, praksja ruchowa</strong></td><td>1,5 h</td><td>350 zł</td></tr>
+            <tr><td><strong>Omówienie</strong></td><td>—</td><td>150 zł</td></tr>
+            <tr><td><strong>Opinia pisemna</strong><span>w kwocie, nie „na życzenie”</span></td><td>—</td><td>150 zł</td></tr>
+            <tr class="adhd-sum"><td><strong>Razem</strong><span>ścieżka od 12. lat</span></td><td></td><td>800 zł</td></tr>
+          </tbody>
+        </table>
+        <p class="adhd-caption">Wydruk dokumentacji – bezpłatnie. Terapii SI w Propsyche na tej stronie nie sprzedajemy. Aktualny cennik całego ośrodka jest na stronie Cennik.</p>
+      </section>
+
+      <section id="faq" class="adhd-section">
+        <p class="adhd-kicker">06 · Pytania</p>
+        <h2>Najczęstsze pytania o diagnozę SI</h2>
+        <div class="adhd-faq">
+          <details>
+            <summary>Od jakiego wieku można zrobić diagnozę SI?</summary>
+            <p>Od 2. roku życia. Pełne Testy Południowo-Kalifornijskie mają normy głównie od około 4. roku życia – młodsze dzieci badamy wywiadem, kwestionariuszem i obserwacją kliniczną.</p>
+          </details>
+          <details>
+            <summary>Ile trwa cała diagnoza?</summary>
+            <p>Zwykle kilka spotkań. Same bloki badania to 50 minut obserwacji i 50 minut testów u dzieci 2–11 lat albo 1,5 godziny rozmowy i prób u młodzieży od 12. lat. Do tego wywiad, omówienie i czas na opinię.</p>
+          </details>
+          <details>
+            <summary>Czy dziecko musi być na wszystkich spotkaniach?</summary>
+            <p>Nie. Omówienie jest z rodzicem. Wywiad bywa bez dziecka, zwłaszcza u starszych.</p>
+          </details>
+          <details>
+            <summary>Czy po diagnozie trzeba iść na terapię SI?</summary>
+            <p>Nie. Terapię omawiamy, gdy wyniki i funkcjonowanie dziecka to uzasadniają. Czasem wystarczają wskazówki do domu i kontrola.</p>
+          </details>
+          <details>
+            <summary>Czy diagnoza SI to to samo co ADHD albo autyzm?</summary>
+            <p>Nie. Zaburzenia przetwarzania sensorycznego mogą współwystępować z ADHD i spektrum autyzmu, ale to osobne rozpoznania i osobne protokoły. SI nie zastępuje ADOS-2 ani diagnozy ADHD.</p>
+          </details>
+          <details>
+            <summary>Czy NFZ refunduje diagnozę SI w Propsyche?</summary>
+            <p>Nie. W Propsyche jest to świadczenie komercyjne. Ścieżka 2–11 lat kosztuje 850 zł, ścieżka od 12. lat – 800 zł. W obu kwotach jest opinia.</p>
+          </details>
+          <details>
+            <summary>Co zabrać na pierwsze spotkanie?</summary>
+            <p>Wcześniejsze opinie innych specjalistów, jeśli są. Okulary, jeśli dziecko nosi. Wygodny strój. Kwestionariusz – jeśli wyślemy go przed wizytą.</p>
+          </details>
+          <details>
+            <summary>Kto może przeprowadzić diagnozę SI?</summary>
+            <p>Wyłącznie certyfikowany terapeuta integracji sensorycznej. Takie jest stanowisko PSTIS i taki standard obowiązuje w Propsyche.</p>
+          </details>
+          <details>
+            <summary>Czy opinia jest w cenie?</summary>
+            <p>Tak. Opinia kosztuje 150 zł i wchodzi w sumę 850 zł albo 800 zł. Nie jest dopłatą „na życzenie”.</p>
+          </details>
+          <details>
+            <summary>Jak się umówić?</summary>
+            <p>Zadzwoń do rejestracji: +48 790 219 220. Wystarczy wiek dziecka i krótki opis tego, co obserwujecie w domu albo w szkole – dobierzemy ścieżkę.</p>
+          </details>
+        </div>
+      </section>
+
+      <section id="kontakt" class="adhd-cta">
+        <h2>Zadzwoń do rejestracji</h2>
+        <p>Powiedz wiek dziecka i co widzicie na co dzień. Dobierzemy ścieżkę 2–11 lat albo od 12. lat i umówimy pierwszy termin. ul. Teofila Lenartowicza 33–35, Bydgoszcz.</p>
+        <div class="adhd-actions">
+          <a class="adhd-btn adhd-btn-primary" href="tel:+48790219220">790 219 220</a>
+          <a class="adhd-btn adhd-btn-ghost" href="mailto:kontakt@pro-psyche.pl">kontakt@pro-psyche.pl</a>
+        </div>
+      </section>
+      <footer class="adhd-foot">
+        <p>Makieta wizualna Grok, sierpień 2026 — nowa podstrona <code>/diagnoza-integracji-sensorycznej-bydgoszcz</code>. Nie zastępuje recenzji merytorycznej przed publikacją. Terapeuty SI nie wymieniamy z nazwiska. Język: karta badania, ten sam co makieta ADHD dorosłych. noindex.</p>
+      </footer>
+    </main>
+  </div>
+  <a class="adhd-callbar" href="tel:+48790219220">Zadzwoń do rejestracji · 790 219 220</a>
+</div>
+<script>
+(function () {
+  var tabs = document.querySelectorAll(".adhd-tabs [data-path]");
+  var jumps = document.querySelectorAll(".adhd-path-jump");
+  var panels = document.querySelectorAll("[data-panel]");
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function selectPath(id, scroll) {
+    tabs.forEach(function (t) {
+      var on = t.getAttribute("data-path") === id;
+      t.classList.toggle("is-on", on);
+      t.setAttribute("aria-selected", on ? "true" : "false");
+      t.tabIndex = on ? 0 : -1;
+    });
+    panels.forEach(function (p) {
+      p.hidden = p.getAttribute("data-panel") !== id;
+    });
+    if (scroll) {
+      var przebieg = document.getElementById("przebieg");
+      if (przebieg) {
+        przebieg.scrollIntoView({
+          behavior: reduceMotion ? "auto" : "smooth",
+          block: "start"
+        });
+      }
+    }
+  }
+
+  tabs.forEach(function (tab, i) {
+    tab.addEventListener("click", function () {
+      selectPath(tab.getAttribute("data-path"), false);
+    });
+    tab.addEventListener("keydown", function (e) {
+      var next = null;
+      if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+        next = tabs[(i + 1) % tabs.length];
+      } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+        next = tabs[(i - 1 + tabs.length) % tabs.length];
+      } else if (e.key === "Home") {
+        next = tabs[0];
+      } else if (e.key === "End") {
+        next = tabs[tabs.length - 1];
+      }
+      if (next) {
+        e.preventDefault();
+        selectPath(next.getAttribute("data-path"), false);
+        next.focus();
+      }
+    });
+  });
+  jumps.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      selectPath(btn.getAttribute("data-path"), true);
+    });
+  });
+})();
+</script>
+</body>
+</html>

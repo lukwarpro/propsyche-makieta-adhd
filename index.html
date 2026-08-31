@@ -25,7 +25,7 @@ img { max-width: 100%; height: auto; }
   --adhd-sheet: #fbf8f2;
   --adhd-ink: #1c2a38;
   --adhd-muted: #5a6370;
-  --adhd-faint: #8a8176;
+  --adhd-faint: #5f5850;
   --adhd-line: #d6cec0;
   --adhd-teal: #0c656c;
   --adhd-teal-soft: #dcecee;
@@ -715,7 +715,7 @@ img { max-width: 100%; height: auto; }
         <li><a href="#faq"><span>06</span>Pytania</a></li>
       </ol>
     </nav>
-    <div id="tresc" class="adhd-main">
+    <main id="tresc" class="adhd-main">
       <section class="adhd-hero">
         <p class="adhd-kicker">Karta diagnostyczna · dorośli</p>
         <h1>Diagnoza ADHD u dorosłych w Bydgoszczy</h1>
@@ -826,10 +826,10 @@ img { max-width: 100%; height: auto; }
         <p class="adhd-kicker">03 · Przebieg</p>
         <h2>Diagnoza krok po kroku</h2>
         <div class="adhd-tabs" role="tablist" aria-label="Ścieżka">
-          <button type="button" role="tab" id="tab-full" aria-selected="true" class="is-on" data-path="full">Pełna diagnoza</button>
-          <button type="button" role="tab" id="tab-partial" aria-selected="false" data-path="partial">Mam już psychiatrę</button>
+          <button type="button" role="tab" id="tab-full" aria-controls="panel-full" aria-selected="true" tabindex="0" class="is-on" data-path="full">Pełna diagnoza</button>
+          <button type="button" role="tab" id="tab-partial" aria-controls="panel-partial" aria-selected="false" tabindex="-1" data-path="partial">Mam już psychiatrę</button>
         </div>
-        <div data-panel="full">
+        <div id="panel-full" role="tabpanel" aria-labelledby="tab-full" data-panel="full">
           <p class="adhd-dek">Psychiatra i psycholog prowadzą Cię od konsultacji po wdrożenie leczenia. Płacisz za odbyte wizyty.</p>
           <ol class="adhd-steps">
             <li><span class="adhd-step-n">01</span><div><p class="adhd-step-who">Psychiatra</p><h3>Konsultacja psychiatryczna</h3><p class="adhd-step-meta">50–60 min · 250–350 zł</p><p>Ocena objawów, historia życia, kwalifikacja do diagnostyki. W razie potrzeby zlecenie badań (krew, ciśnienie).</p></div></li>
@@ -838,7 +838,7 @@ img { max-width: 100%; height: auto; }
             <li><span class="adhd-step-n">04</span><div><p class="adhd-step-who">Psychiatra</p><h3>Podsumowanie i włączenie leczenia</h3><p class="adhd-step-meta">50–60 min · 250–350 zł</p><p>Omówienie wyników, weryfikacja badań, wdrożenie leczenia, recepty i zaświadczenia — jeśli zasadne.</p></div></li>
           </ol>
         </div>
-        <div data-panel="partial" hidden>
+        <div id="panel-partial" role="tabpanel" aria-labelledby="tab-partial" data-panel="partial" hidden>
           <p class="adhd-dek">Testy, DIVA-5 i opis, gdy ocenę psychiatryczną wykonujesz w innym ośrodku. Rejestracja poprosi o dokumentację.</p>
           <ol class="adhd-steps">
             <li><span class="adhd-step-n">01</span><div><p class="adhd-step-who">Psycholog</p><h3>Testy psychologiczne (Epsilon)</h3><p class="adhd-step-meta">ok. 1,5–2 h · 150 zł</p><p>Standaryzowane testy i kwestionariusze PTP: uwaga, pamięć robocza, funkcje wykonawcze. W gabinecie.</p></div></li>
@@ -846,7 +846,7 @@ img { max-width: 100%; height: auto; }
           </ol>
           <p class="adhd-note">Jeśli po tej ścieżce zdecydujesz się leczyć u naszego psychiatry, w większości przypadków potrzebne będą dwie wizyty — tak jak w pełnej ścieżce.</p>
         </div>
-        <p class="adhd-note">Zwykle 2–4 spotkania o różnej długości. O liczbie decyduje obraz kliniczny, nie z góry ustalony pakiet. Rejestracja powie o terminach przy zapisie.</p>
+        <p class="adhd-note">Zwykle 2–4 spotkania o różnej długości — część etapów da się połączyć jednego dnia. O liczbie decyduje obraz kliniczny, nie gotowy pakiet. Rejestracja powie o terminach przy zapisie.</p>
       </section>
 
       <section class="adhd-section adhd-tools">
@@ -881,14 +881,14 @@ img { max-width: 100%; height: auto; }
         <h2>Zespół diagnostyczny ADHD</h2>
         <p class="adhd-dek">Psychiatrzy odpowiadają za konsultację i kwalifikację. Psycholodzy — za badanie i DIVA-5. Każdy wynik to wspólna ocena kliniczna, nie pojedynczy kwestionariusz. Pracujemy wg wytycznych Polskiego Towarzystwa Psychiatrycznego; specjaliści są członkami World Federation of ADHD.</p>
         <ul class="adhd-team">
-          <li><img src="https://pro-psyche.pl/wp-content/uploads/2023/12/Katarzyna-lachut-propsyche-bydgoszcz-psychiatra-003.jpg" alt="" width="240" height="240"><p class="adhd-team-name">Katarzyna Łachut</p><p class="adhd-team-role">Psychiatra</p><p class="adhd-team-note">Specjalista psychiatra, psychogeriatra</p></li>
-          <li><img src="https://pro-psyche.pl/wp-content/uploads/2024/06/beata-przybyslawska-psychiatra-bydgoszcz-500x500_2.jpg" alt="" width="240" height="240"><p class="adhd-team-name">Beata Przybysławska</p><p class="adhd-team-role">Psychiatra</p><p class="adhd-team-note">Specjalista psychiatra</p></li>
-          <li><img src="https://pro-psyche.pl/wp-content/uploads/2026/07/katarzyna-latos-biala-psychiatria-propsyche-crop.webp" alt="" width="240" height="240"><p class="adhd-team-name">Katarzyna Latos-Biała</p><p class="adhd-team-role">Psychiatra</p><p class="adhd-team-note">Lekarz, w trakcie specjalizacji</p></li>
-          <li><img src="https://pro-psyche.pl/assets/images/services/adhd/adhd-zespol-lukasz-warchol.webp" alt="" width="240" height="240"><p class="adhd-team-name">Łukasz Warchoł</p><p class="adhd-team-role">Lider zespołu</p><p class="adhd-team-note">Psycholog, psychoterapeuta, neuropsycholog</p></li>
-          <li><img src="https://pro-psyche.pl/wp-content/uploads/2025/02/Jakub-jankowski-psycholog-propsyche-bydgoszcz-001.jpg" alt="" width="240" height="240"><p class="adhd-team-name">Jakub Jankowski</p><p class="adhd-team-role">Starszy diagnosta</p><p class="adhd-team-note">Psycholog, psychoterapeuta</p></li>
-          <li><img src="https://pro-psyche.pl/wp-content/uploads/2025/05/Lidia-Gajda-psycholog-psychoterapeuta-propsyche-bydgoszcz-004.jpg" alt="" width="240" height="240"><p class="adhd-team-name">Lidia Gajda</p><p class="adhd-team-role">Starsza diagnostka</p><p class="adhd-team-note">Psycholog, psychoterapeutka</p></li>
-          <li><img src="https://pro-psyche.pl/wp-content/uploads/2026/07/ewa-wrzos-psycholozka-propsyche.webp" alt="" width="240" height="240"><p class="adhd-team-name">Ewa Wrzos</p><p class="adhd-team-role">Młodsza diagnostka</p><p class="adhd-team-note">Psycholog</p></li>
-          <li><img src="https://pro-psyche.pl/wp-content/uploads/2026/02/Zachariasz-Renusz.jpg" alt="" width="240" height="240"><p class="adhd-team-name">Zachariasz Renusz</p><p class="adhd-team-role">Młodszy diagnosta</p><p class="adhd-team-note">Psycholog</p></li>
+          <li><img src="https://pro-psyche.pl/wp-content/uploads/2023/12/Katarzyna-lachut-propsyche-bydgoszcz-psychiatra-003.jpg" alt="" width="240" height="240" loading="lazy" decoding="async"><p class="adhd-team-name">Katarzyna Łachut</p><p class="adhd-team-role">Psychiatra</p><p class="adhd-team-note">Specjalista psychiatra, psychogeriatra</p></li>
+          <li><img src="https://pro-psyche.pl/wp-content/uploads/2024/06/beata-przybyslawska-psychiatra-bydgoszcz-500x500_2.jpg" alt="" width="240" height="240" loading="lazy" decoding="async"><p class="adhd-team-name">Beata Przybysławska</p><p class="adhd-team-role">Psychiatra</p><p class="adhd-team-note">Specjalista psychiatra</p></li>
+          <li><img src="https://pro-psyche.pl/wp-content/uploads/2026/07/katarzyna-latos-biala-psychiatria-propsyche-crop.webp" alt="" width="240" height="240" loading="lazy" decoding="async"><p class="adhd-team-name">Katarzyna Latos-Biała</p><p class="adhd-team-role">Psychiatra</p><p class="adhd-team-note">Lekarz, w trakcie specjalizacji</p></li>
+          <li><img src="https://pro-psyche.pl/assets/images/services/adhd/adhd-zespol-lukasz-warchol.webp" alt="" width="240" height="240" loading="lazy" decoding="async"><p class="adhd-team-name">Łukasz Warchoł</p><p class="adhd-team-role">Lider zespołu</p><p class="adhd-team-note">Psycholog, psychoterapeuta, neuropsycholog</p></li>
+          <li><img src="https://pro-psyche.pl/wp-content/uploads/2025/02/Jakub-jankowski-psycholog-propsyche-bydgoszcz-001.jpg" alt="" width="240" height="240" loading="lazy" decoding="async"><p class="adhd-team-name">Jakub Jankowski</p><p class="adhd-team-role">Starszy diagnosta</p><p class="adhd-team-note">Psycholog, psychoterapeuta</p></li>
+          <li><img src="https://pro-psyche.pl/wp-content/uploads/2025/05/Lidia-Gajda-psycholog-psychoterapeuta-propsyche-bydgoszcz-004.jpg" alt="" width="240" height="240" loading="lazy" decoding="async"><p class="adhd-team-name">Lidia Gajda</p><p class="adhd-team-role">Starsza diagnostka</p><p class="adhd-team-note">Psycholog, psychoterapeutka</p></li>
+          <li><img src="https://pro-psyche.pl/wp-content/uploads/2026/07/ewa-wrzos-psycholozka-propsyche.webp" alt="" width="240" height="240" loading="lazy" decoding="async"><p class="adhd-team-name">Ewa Wrzos</p><p class="adhd-team-role">Młodsza diagnostka</p><p class="adhd-team-note">Psycholog</p></li>
+          <li><img src="https://pro-psyche.pl/wp-content/uploads/2026/02/Zachariasz-Renusz.jpg" alt="" width="240" height="240" loading="lazy" decoding="async"><p class="adhd-team-name">Zachariasz Renusz</p><p class="adhd-team-role">Młodszy diagnosta</p><p class="adhd-team-note">Psycholog</p></li>
         </ul>
       </section>
 
@@ -961,7 +961,7 @@ img { max-width: 100%; height: auto; }
       <footer class="adhd-foot">
         <p>Treść zgodna z żywą stroną Propsyche. Konsultacja merytoryczna: lek. Beata Przybysławska, mgr Łukasz Warchoł, lek. Katarzyna Łachut. Makieta wizualna Grok, sierpień 2026 — nie zastępuje recenzji medycznej przed publikacją.</p>
       </footer>
-    </div>
+    </main>
   </div>
   <a class="adhd-callbar" href="tel:+48790219220">Zadzwoń 790 219 220</a>
 </div>
@@ -970,25 +970,49 @@ img { max-width: 100%; height: auto; }
   var tabs = document.querySelectorAll(".adhd-tabs [data-path]");
   var jumps = document.querySelectorAll(".adhd-path-jump");
   var panels = document.querySelectorAll("[data-panel]");
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   function selectPath(id, scroll) {
     tabs.forEach(function (t) {
       var on = t.getAttribute("data-path") === id;
       t.classList.toggle("is-on", on);
       t.setAttribute("aria-selected", on ? "true" : "false");
+      t.tabIndex = on ? 0 : -1;
     });
     panels.forEach(function (p) {
       p.hidden = p.getAttribute("data-panel") !== id;
     });
     if (scroll) {
       var przebieg = document.getElementById("przebieg");
-      if (przebieg) przebieg.scrollIntoView({ behavior: "smooth", block: "start" });
+      if (przebieg) {
+        przebieg.scrollIntoView({
+          behavior: reduceMotion ? "auto" : "smooth",
+          block: "start"
+        });
+      }
     }
   }
 
-  tabs.forEach(function (tab) {
+  tabs.forEach(function (tab, i) {
     tab.addEventListener("click", function () {
       selectPath(tab.getAttribute("data-path"), false);
+    });
+    tab.addEventListener("keydown", function (e) {
+      var next = null;
+      if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+        next = tabs[(i + 1) % tabs.length];
+      } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+        next = tabs[(i - 1 + tabs.length) % tabs.length];
+      } else if (e.key === "Home") {
+        next = tabs[0];
+      } else if (e.key === "End") {
+        next = tabs[tabs.length - 1];
+      }
+      if (next) {
+        e.preventDefault();
+        selectPath(next.getAttribute("data-path"), false);
+        next.focus();
+      }
     });
   });
   jumps.forEach(function (btn) {
@@ -1000,7 +1024,13 @@ img { max-width: 100%; height: auto; }
   if (play) {
     play.addEventListener("click", function () {
       var shell = play.parentElement;
-      shell.innerHTML = '<iframe title="ADHD – diagnoza w Propsyche" src="https://www.youtube-nocookie.com/embed/O4mbOO1mF6w?autoplay=1&rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+      var iframe = document.createElement("iframe");
+      iframe.title = "ADHD – diagnoza w Propsyche";
+      iframe.src = "https://www.youtube-nocookie.com/embed/O4mbOO1mF6w?autoplay=1&rel=0";
+      iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+      iframe.allowFullscreen = true;
+      shell.replaceChildren(iframe);
+      iframe.focus();
     });
   }
 })();

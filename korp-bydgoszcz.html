@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KORP Bydgoszcz – Propsyche</title>
+<meta name="description" content="KORP Bydgoszcz – Karty Oceny Rozwoju Psychoruchowego. Ocena rozwoju dziecka od 1. miesiąca do 9. roku życia. Wywiad z rodzicem i badanie dziecka, ok. 2 godziny, 400 zł.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --teal:#009bab; --teal-hover:#007a88; --teal-accent:#7ad4dc;
+  --navy:#1d3557; --navy-deep:#0e2136;
+  --ink:#1F2A37; --muted:#5A6673; --soft:#6B7683; --line:#E4E9EE;
+  --paper:#FBFCFD; --pill:999px;
+  --font-sans:Inter,system-ui,sans-serif;
+  --font-serif:Fraunces,Georgia,serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--font-sans);color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--teal-hover);text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+.topbar{background:var(--navy-deep);color:#c9d4de;font-size:13px}
+.topbar .wrap{display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center;min-height:38px}
+.topbar a{color:#c9d4de}
+.sitehead{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:40}
+.sitehead .wrap{display:flex;align-items:center;gap:28px;min-height:72px}
+.brand{display:flex;align-items:center;gap:8px;font-weight:700;color:var(--teal);font-size:20px;letter-spacing:-.02em}
+.brand span{color:var(--navy-deep);font-weight:600}
+.nav{display:flex;gap:18px;font-size:14.5px;font-weight:500;color:#3A4653;margin-left:auto}
+.nav a{color:#3A4653}
+.nav a.on{color:var(--navy-deep);border-bottom:2px solid var(--teal);padding-bottom:4px}
+.btn-call{background:var(--teal);color:#fff!important;font-weight:600;padding:10px 18px;border-radius:999px;font-size:14px;white-space:nowrap}
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(90% 70% at 82% -8%,#DDF1F3 0%,rgba(221,241,243,0) 60%),
+  radial-gradient(70% 60% at 8% 12%,#EAF3EC 0%,rgba(234,243,236,0) 55%),
+  radial-gradient(80% 90% at 50% 120%,#E9EEF6 0%,rgba(233,238,246,0) 55%),#FBFCFD}
+.hero-inner{max-width:1120px;margin:0 auto;padding:26px 22px 60px}
+.crumbs{font-size:13px;color:#6B7683;margin-bottom:22px;display:flex;gap:8px;flex-wrap:wrap}
+.crumbs a{color:#6B7683}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,0.85fr);gap:52px;align-items:center}
+.chip{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-hover);background:#E6F7F7;border:1px solid #cfeef0;padding:6px 13px;border-radius:var(--pill)}
+h1{font-family:var(--font-serif);font-weight:500;font-size:clamp(34px,5.2vw,54px);line-height:1.08;letter-spacing:-.01em;color:var(--navy-deep);margin:20px 0 16px}
+.lead{font-size:clamp(16px,2.2vw,19px);color:#48535F;max-width:34em;margin:0 0 26px}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:16px}
+.btn-teal{display:inline-flex;align-items:center;gap:9px;background:var(--teal);color:#fff;font-weight:600;font-size:16px;padding:15px 26px;border-radius:12px;box-shadow:0 8px 22px -8px rgba(0,155,171,.55)}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--navy-deep);font-weight:600;font-size:16px;padding:15px 24px;border-radius:12px;border:1.5px solid #d7dee6}
+.note{display:flex;align-items:center;gap:8px;font-size:13.5px;color:#5A6673;margin:0 0 20px}
+.pills{display:flex;flex-wrap:wrap;gap:8px 10px}
+.pills span{font-size:13px;color:#48535F;background:#fff;border:1px solid #E4E9EE;padding:7px 12px;border-radius:var(--pill)}
+.hero-side{display:flex;flex-direction:column;gap:18px}
+.hero-photo{border-radius:20px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 22px 50px -30px rgba(18,38,66,.4);background:#eee}
+.hero-photo img{width:100%;height:100%;object-fit:cover}
+.card{background:#fff;border:1px solid #E4E9EE;border-radius:20px;padding:26px;box-shadow:0 26px 60px -34px rgba(18,38,66,.35)}
+.card h2{font-family:var(--font-serif);font-size:20px;color:var(--navy-deep);margin:0 0 4px;font-weight:500}
+.card .sub{font-size:13.5px;color:#6B7683;margin:0 0 18px}
+.row{display:flex;gap:12px;padding:12px 0;border-top:1px solid #EEF2F5}
+.tick{flex:none;width:26px;height:26px;border-radius:8px;background:#E6F7F7;color:var(--teal-hover);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700}
+.row strong{display:block;font-size:14.5px;color:#243342}
+.row small{display:block;font-size:13px;color:#6B7683}
+.btn-navy{display:block;text-align:center;margin-top:18px;background:var(--navy-deep);color:#fff;font-weight:600;padding:13px;border-radius:11px}
+.facts{background:linear-gradient(180deg,#F1F8F9,#FBFCFD)}
+.facts-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;padding:52px 0}
+.fact{text-align:center;padding:14px}
+.fact b{font-family:var(--font-serif);font-weight:600;font-size:clamp(28px,4vw,44px);color:var(--navy-deep);line-height:1;display:block}
+.fact i{display:block;width:30px;height:3px;border-radius:2px;background:var(--teal);margin:12px auto}
+.fact span{font-size:14px;color:#5A6673}
+.sec{padding:64px 0}
+.kicker{font-size:12.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--teal-hover);margin-bottom:10px}
+h2.serif{font-family:var(--font-serif);font-weight:500;font-size:clamp(26px,3.6vw,36px);color:var(--navy-deep);margin:0 0 12px;letter-spacing:-.01em}
+p.muted{color:#48535F;margin:0}
+.two{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,0.95fr);gap:44px;align-items:center}
+.photo{border-radius:16px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 22px 50px -30px rgba(18,38,66,.35);background:#eee}
+.photo img{width:100%;height:100%;object-fit:cover}
+.spheres{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:34px}
+.sphere{background:#fff;border:1px solid #E4E9EE;border-radius:16px;padding:22px 22px 20px}
+.sphere .num{font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--teal);margin-bottom:8px}
+.sphere h3{font-family:var(--font-serif);font-size:18px;font-weight:500;color:var(--navy-deep);margin:0 0 8px}
+.sphere p{font-size:14px;color:#5A6673;margin:0;line-height:1.55}
+.when{background:radial-gradient(70% 90% at 100% 0%,#FCEEE4 0%,rgba(252,238,228,0) 55%),radial-gradient(60% 80% at 0% 100%,#EAF5EC 0%,rgba(234,245,236,0) 55%),#FBFCFD}
+.when-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:44px;align-items:start}
+.symlist{background:#fff;border:1px solid #E4E9EE;border-radius:18px;padding:8px 24px}
+.sym{display:flex;gap:12px;align-items:flex-start;padding:13px 0;border-top:1px solid #EEF2F5}
+.sym:first-child{border-top:0}
+.sym .d{color:var(--teal);font-size:15px;margin-top:2px}
+.sym span{font-size:14.5px;color:#3A4653}
+.callout{display:flex;gap:11px;align-items:center;background:#EEF4F5;border:1px solid #dCe7ea;border-radius:12px;padding:13px 16px;margin-top:18px;font-size:13.5px;color:#3A4653}
+.callout b{width:4px;align-self:stretch;border-radius:2px;background:var(--teal);flex:none}
+.timeline{position:relative;max-width:760px;margin:0 auto;padding-left:64px}
+.timeline::before{content:"";position:absolute;left:26px;top:8px;bottom:8px;width:3px;background:#E3E9EE;border-radius:2px}
+.step{position:relative;margin-bottom:20px}
+.step-n{position:absolute;left:-64px;top:0;width:54px;height:54px;border-radius:15px;color:#fff;font-family:var(--font-serif);font-size:22px;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px -8px rgba(18,38,66,.45)}
+.step-box{background:#fff;border:1px solid #E7ECF1;border-radius:16px;padding:20px 24px}
+.step-box h3{font-size:17px;font-weight:600;color:var(--navy-deep);margin:0}
+.step-box .meta{font-size:12px;color:var(--teal-hover);font-weight:600;white-space:nowrap}
+.step-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.step-box p{font-size:14px;color:#6B7683;margin:6px 0 0}
+.std{position:relative;background:radial-gradient(100% 120% at 90% 0%,#173a5e 0%,#0e2136 60%);color:#fff}
+.std-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;padding:60px 0}
+.pillar{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:22px}
+.pillar h3{font-family:var(--font-serif);font-size:18px;font-weight:500;margin:0 0 8px;color:#fff}
+.pillar p{font-size:14px;color:#B9C6D6;margin:0;line-height:1.55}
+.price-wrap{max-width:820px;margin:0 auto}
+.price-table{background:#fff;border:1px solid #E4E9EE;border-radius:16px;overflow:hidden}
+.price-row{display:grid;grid-template-columns:1.2fr 1.6fr auto;gap:16px;padding:18px 22px;border-top:1px solid #EEF2F5;align-items:center}
+.price-row:first-child{border-top:0;background:#F7FAFB;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#8A96A2}
+.price-row b{font-size:16px;color:var(--navy-deep)}
+.price-row span{font-size:14px;color:#5A6673}
+.price-row em{font-style:normal;font-weight:700;font-size:18px;color:var(--navy-deep);white-space:nowrap}
+.price-note{text-align:center;font-size:13px;color:#8A96A2;margin:16px 0 0}
+.faq{max-width:820px;margin:0 auto}
+details.faq-item{background:#fff;border:1px solid #E4E9EE;border-radius:14px;margin-bottom:10px;padding:0 20px}
+details.faq-item summary{cursor:pointer;font-weight:600;color:var(--navy-deep);padding:16px 0;list-style:none;display:flex;justify-content:space-between;gap:12px;align-items:center}
+details.faq-item summary::-webkit-details-marker{display:none}
+details.faq-item summary::after{content:"+";color:var(--teal);font-size:20px;font-weight:500}
+details.faq-item[open] summary::after{content:"–"}
+details.faq-item p{margin:0 0 16px;font-size:14.5px;color:#48535F;line-height:1.65}
+.related{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.rel{display:block;background:#fff;border:1px solid #E4E9EE;border-radius:14px;padding:18px 20px}
+.rel strong{display:flex;justify-content:space-between;font-size:15px;color:var(--navy-deep)}
+.rel p{font-size:13px;color:#6B7683;margin:6px 0 0}
+.final{background:radial-gradient(120% 130% at 15% 0%,#173a5e 0%,#0e2136 60%);color:#fff;text-align:center;padding:66px 22px 92px}
+.final h2{font-family:var(--font-serif);font-weight:500;font-size:clamp(26px,4vw,38px);margin:0 0 14px;letter-spacing:-.01em;color:#fff}
+.final p{color:#B9C6D6;max-width:34em;margin:0 auto 28px}
+.callbar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;align-items:center;justify-content:center;gap:10px;background:#E76F51;color:#fff;font-weight:700;font-size:16px;padding:15px;box-shadow:0 -6px 20px -8px rgba(0,0,0,.35)}
+.preview-banner{background:#173a5e;color:#dbe6f2;font-size:13px;padding:8px 22px;text-align:center}
+.preview-banner strong{color:#fff}
+@media(max-width:900px){
+  .nav{display:none}
+  .hero-grid,.two,.when-grid{grid-template-columns:1fr}
+  .facts-grid,.std-grid{grid-template-columns:repeat(2,1fr)}
+  .spheres,.related{grid-template-columns:1fr}
+  .price-row{grid-template-columns:1fr;gap:4px}
+  .callbar{display:flex}
+  body{padding-bottom:56px}
+}
+</style>
+</head>
+<body>
+<div class="preview-banner">Podgląd podstrony <strong>/korp-bydgoszcz</strong> · język wizualny jak diagnoza ADHD · treść do wrzucenia do repo</div>
+<div class="topbar"><div class="wrap">
+  <a href="tel:+48790219220">790 219 220</a>
+  <a href="mailto:kontakt@pro-psyche.pl">kontakt@pro-psyche.pl</a>
+  <span>Lenartowicza 33–35, Bydgoszcz</span>
+  <a href="https://pro-psyche.pl/telefony-zaufania" style="margin-left:auto">Telefony zaufania</a>
+</div></div>
+<header class="sitehead"><div class="wrap">
+  <a class="brand" href="https://pro-psyche.pl/">propsyche</a>
+  <nav class="nav">
+    <a class="on" href="#">Dzieci i młodzież</a>
+    <a href="https://pro-psyche.pl/psycholog-bydgoszcz">Dorośli</a>
+    <a href="https://pro-psyche.pl/seniorzy">Seniorzy</a>
+    <a href="https://pro-psyche.pl/zespol">Zespół</a>
+    <a href="https://pro-psyche.pl/cennik">Cennik</a>
+    <a href="https://pro-psyche.pl/kontakt">Kontakt</a>
+  </nav>
+  <a class="btn-call" href="tel:+48790219220">Zadzwoń: 790 219 220</a>
+</div></header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <nav class="crumbs" aria-label="Okruszki">
+      <a href="https://pro-psyche.pl/">Start</a><span>›</span>
+      <a href="https://pro-psyche.pl/diagnoza-psychologiczna-dzieci-i-mlodziezy">Diagnoza dzieci</a><span>›</span>
+      <span style="color:#1F2A37">KORP Bydgoszcz</span>
+    </nav>
+    <div class="hero-grid">
+      <div>
+        <span class="chip">Ocena rozwoju · stacjonarnie</span>
+        <h1>KORP Bydgoszcz</h1>
+        <p class="lead">Karty Oceny Rozwoju Psychoruchowego – od 1. miesiąca życia do ukończenia 9. roku życia. Wywiad z rodzicem i badanie dziecka, zwykle około 2 godzin.</p>
+        <div class="cta-row">
+          <a class="btn-teal" href="tel:+48790219220">☎ Zadzwoń i umów badanie</a>
+          <a class="btn-ghost" href="#przebieg">Poznaj przebieg badania</a>
+        </div>
+        <p class="note"><span style="color:var(--teal)">✓</span> Liczba spotkań z dzieckiem zależy od jego tempa – pakiet zostaje ten sam.</p>
+        <div class="pills">
+          <span>1 m.ż. – 9 r.ż.</span>
+          <span>7 sfer rozwoju</span>
+          <span>Polskie normy</span>
+          <span>400 zł</span>
+        </div>
+      </div>
+      <div class="hero-side">
+        <div class="hero-photo"><img src="https://pro-psyche.pl/assets/images/services/Diagnoza-ADHD-dzieci-mlodziezy-bydgoszcz-002.jpg" alt="Badanie rozwoju dziecka w Propsyche Bydgoszcz" width="800" height="600"></div>
+        <aside class="card">
+          <h2>Najważniejsze przed zapisem</h2>
+          <p class="sub">Co dostajesz, za ile i w jakim czasie.</p>
+          <div class="row"><span class="tick">✓</span><div><strong>Wywiad z rodzicem w cenie</strong><small>Historia rozwoju i codzienność dziecka</small></div></div>
+          <div class="row"><span class="tick">✓</span><div><strong>Badanie dziecka: 1 albo 2 spotkania</strong><small>Tempo ustalamy przy dziecku</small></div></div>
+          <div class="row"><span class="tick">✓</span><div><strong>Profil 7 sfer, nie jedna liczba</strong><small>Mocne strony i obszary do wsparcia</small></div></div>
+          <div class="row"><span class="tick">✓</span><div><strong>Ok. 2 godziny · 400 zł</strong><small>Pisemna opinia osobno, 300 zł</small></div></div>
+          <a class="btn-navy" href="tel:+48790219220">Umów wizytę telefonicznie</a>
+        </aside>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="facts"><div class="wrap">
+  <div class="facts-grid">
+    <div class="fact"><b>1 m.ż.–9</b><i></i><span>lat – zakres wieku badania KORP</span></div>
+    <div class="fact"><b>7</b><i></i><span>sfer rozwoju w jednym profilu</span></div>
+    <div class="fact"><b>13</b><i></i><span>grup wiekowych, polskie normy</span></div>
+    <div class="fact"><b>400 zł</b><i></i><span>wywiad + badanie, ok. 2 godziny</span></div>
+  </div>
+</div></section>
+
+<section class="sec" id="o-badaniu"><div class="wrap two">
+  <div>
+    <div class="kicker">O badaniu</div>
+    <h2 class="serif">KORP w Propsyche w Bydgoszczy</h2>
+    <p class="muted" style="margin-bottom:14px"><strong>KORP</strong> (Karty Oceny Rozwoju Psychoruchowego) to standaryzowane narzędzie do oceny rozwoju psychoruchowego dziecka. Pozwala sprawdzić, czy rozwój przebiega harmonijnie i zgodnie z oczekiwaniami właściwymi dla danego wieku.</p>
+    <p class="muted">W Propsyche badanie KORP jest <strong>elementem procesu diagnostycznego</strong>, a nie samodzielnym werdyktem. Łączymy wywiad z rodzicem z bezpośrednim badaniem dziecka. Całość trwa zwykle około 2 godzin i kosztuje 400 zł. Liczba spotkań z dzieckiem – jedno albo dwa – zależy od jego możliwości: tempa, zmęczenia i tego, jak łatwo nawiązuje kontakt w nowym miejscu.</p>
+  </div>
+  <div class="photo"><img src="https://pro-psyche.pl/assets/images/services/Diagnoza-psychologiczna-dzieci-i-mlodziezy-bydgoszcz-001.jpg" alt="Obserwacja dziecka podczas badania rozwojowego w Propsyche" width="800" height="600"></div>
+</div></section>
+
+<section class="sec" style="padding-top:0" id="zakres"><div class="wrap">
+  <div style="max-width:38em">
+    <div class="kicker">Zakres narzędzia</div>
+    <h2 class="serif">Siedem sfer rozwoju ocenianych w KORP</h2>
+    <p class="muted">Dzięki temu widać nie tylko „czy jest opóźnienie”, ale gdzie dziecko radzi sobie dobrze, a gdzie potrzebuje wsparcia. Wynik nie sprowadza się do jednej liczby – diagnosta buduje profil.</p>
+  </div>
+  <div class="spheres">
+    <article class="sphere"><div class="num">01</div><h3>Rozwój ruchowy</h3><p>Napięcie, sprawność całego ciała, równowaga, przemieszczanie się.</p></article>
+    <article class="sphere"><div class="num">02</div><h3>Motoryka precyzyjna i lateralizacja</h3><p>Sprawność dłoni i palców, chwyt, rysowanie, wiodąca ręka, noga i oko.</p></article>
+    <article class="sphere"><div class="num">03</div><h3>Spostrzeganie wzrokowe</h3><p>Śledzenie, rozpoznawanie, układanie, koordynacja wzrokowo-ruchowa.</p></article>
+    <article class="sphere"><div class="num">04</div><h3>Komunikowanie się i mowa</h3><p>Kontakt przedwerbalny, rozumienie, mowa czynna, percepcja słuchowa.</p></article>
+    <article class="sphere"><div class="num">05</div><h3>Emocje i relacje społeczne</h3><p>Więź, regulacja emocji, kontakt z dorosłym i rówieśnikiem.</p></article>
+    <article class="sphere"><div class="num">06</div><h3>Funkcje behawioralne</h3><p>Uwaga, samoregulacja, reakcja na zmianę, zachowania trudne.</p></article>
+    <article class="sphere" style="grid-column:1/-1"><div class="num">07</div><h3>Wiedza i umiejętności</h3><p>Kompetencje przedszkolne i szkolne – sfera oceniana od 3. do 9. roku życia.</p></article>
+  </div>
+</div></section>
+
+<section class="when sec" id="dla-kogo"><div class="wrap when-grid">
+  <div>
+    <div class="kicker">Dla kogo</div>
+    <h2 class="serif">Kiedy warto wykonać badanie KORP?</h2>
+    <p class="muted" style="margin-bottom:14px">KORP bywa właściwym krokiem, gdy rozwój budzi pytania, przebiega nierównomiernie albo gdy potrzebny jest uporządkowany punkt wyjścia przed terapią.</p>
+    <p class="muted">KORP nie zastępuje diagnozy spektrum autyzmu, ADHD ani oceny intelektu. Do tych pytań służą inne narzędzia – m.in. ADOS-2, ADI-R, Conners-3, IDS-2 albo Stanford-Binet 5. KORP może jednak pokazać, w których sferach warto pogłębić ocenę.</p>
+    <div class="callout"><b></b><span>U najmłodszych spotkanie ma charakter obserwacji i delikatnej interakcji, nie egzaminu.</span></div>
+    <div class="photo" style="margin-top:22px"><img src="https://pro-psyche.pl/assets/images/services/Test-ADOS-Bydgoszcz-Propsyche-003.jpg" alt="Gabinet diagnostyczny Propsyche Bydgoszcz" width="800" height="600"></div>
+  </div>
+  <div class="symlist">
+    <div class="sym"><span class="d">◆</span><span>Rozwój budzi pytania – wolniejsze tempo, cofanie się umiejętności, sygnały w ruchu, mowie albo kontakcie</span></div>
+    <div class="sym"><span class="d">◆</span><span>Rozwój jest nierównomierny: w jednych sferach dziecko wyprzedza rówieśników, w innych zostaje w tyle</span></div>
+    <div class="sym"><span class="d">◆</span><span>Potrzebny jest uporządkowany punkt wyjścia przed terapią logopedyczną, SI, fizjoterapią albo wsparciem psychologicznym</span></div>
+    <div class="sym"><span class="d">◆</span><span>Żłobek, przedszkole albo szkoła sygnalizują trudności, a rodzina chce rzetelnego opisu, nie etykiety</span></div>
+    <div class="sym"><span class="d">◆</span><span>Trzeba ocenić gotowość przedszkolną lub szkolną i zaplanować realistyczne wsparcie</span></div>
+  </div>
+</div></section>
+
+<section class="sec" id="przebieg"><div class="wrap">
+  <div style="text-align:center;max-width:36em;margin:0 auto 26px">
+    <div class="kicker">Jak to wygląda</div>
+    <h2 class="serif">Jak przebiega badanie KORP?</h2>
+  </div>
+  <p style="text-align:center;max-width:40em;margin:0 auto 34px;color:#6B7683;font-size:14px">Same karty nie kończą rozpoznania. Wynik czytamy razem z wywiadem, obserwacją w gabinecie i – gdy to potrzebne – z innymi badaniami.</p>
+  <div class="timeline">
+    <div class="step">
+      <div class="step-n" style="background:var(--teal)">1</div>
+      <div class="step-box">
+        <div class="step-head"><h3>Wywiad z rodzicem</h3><span class="meta">w cenie pakietu</span></div>
+        <p>Rozmowa o historii rozwoju, codziennym funkcjonowaniu i zgłaszanych trudnościach. Jeśli to możliwe, dziecko w tym czasie zostaje z drugim opiekunem albo bawi się w gabinecie. Warto zabrać książeczkę zdrowia, wcześniejsze opinie i dokumentację z żłobka, przedszkola albo szkoły.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-n" style="background:#E8804E">2</div>
+      <div class="step-box">
+        <div class="step-head"><h3>Badanie z dzieckiem</h3><span class="meta">1 albo 2 spotkania</span></div>
+        <p>Diagnosta przeprowadza próby odpowiednie do wieku i aktualnych możliwości dziecka. Rodzic może zostać w gabinecie, jeśli dziecko tego potrzebuje. Jeśli dziecko się męczy albo potrzebuje czasu na oswojenie, badanie dzielimy na dwa spotkania – bez zmiany kosztu pakietu.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-n" style="background:#3E9E5B">3</div>
+      <div class="step-box">
+        <div class="step-head"><h3>Omówienie wyników i zalecenia</h3><span class="meta">w cenie pakietu</span></div>
+        <p>Po analizie profilu rozmawiamy o tym, co widać w poszczególnych sferach, co jest zasobem, a co wymaga wsparcia. Rodzic dostaje konkretne rekomendacje: obserwacja, terapia, konsultacja innego specjalisty albo – gdy obraz tego wymaga – pogłębienie diagnostyki.</p>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section class="std" id="standardy"><div class="wrap">
+  <div style="padding-top:60px;max-width:36em">
+    <div class="kicker" style="color:var(--teal-accent)">Standardy diagnozy</div>
+    <h2 class="serif" style="color:#fff">Nie etykieta. Profil i plan dalszego działania.</h2>
+  </div>
+  <div class="std-grid">
+    <div class="pillar"><h3>Standaryzowane narzędzia</h3><p>Testy z polskimi normami – KORP, ADOS-2, ADI-R, DIVA-5, SB5, IDS-2 i inne, dobierane do pytania diagnostycznego.</p></div>
+    <div class="pillar"><h3>Pogłębiony wywiad</h3><p>Każda diagnoza zaczyna się od uważnego wysłuchania. Zbieramy pełny obraz sytuacji, historii i potrzeb.</p></div>
+    <div class="pillar"><h3>Człowiek, nie etykieta</h3><p>Nie diagnozujemy, by nadać etykietę. Diagnoza jest narzędziem do zrozumienia dziecka i zaproponowania pomocy.</p></div>
+    <div class="pillar"><h3>Wspólne spojrzenie zespołu</h3><p>Psychologowie, psychiatrzy i psychoterapeuci czytają obraz razem. KORP to jedna karta, nie cały werdykt.</p></div>
+  </div>
+</div></section>
+
+<section class="sec" id="cennik"><div class="wrap price-wrap">
+  <div style="text-align:center;margin-bottom:32px">
+    <h2 class="serif">Cennik badania KORP</h2>
+    <p class="muted">400 zł obejmuje wywiad z rodzicem i badanie dziecka. Pisemna opinia jest osobną pozycją – tak jak przy ADOS-2, ADI-R i SB5.</p>
+  </div>
+  <div class="price-table">
+    <div class="price-row"><span>Świadczenie</span><span>Zakres</span><span>Cena</span></div>
+    <div class="price-row"><b>Diagnoza KORP</b><span>Wywiad z rodzicem + badanie dziecka, ok. 2 h (1–2 spotkania z dzieckiem)</span><em>400 zł</em></div>
+    <div class="price-row"><b>Opinia psychologiczna</b><span>Pisemne opracowanie na życzenie, poza pakietem badania</span><em>300 zł</em></div>
+  </div>
+  <p class="price-note">Świadczenie komercyjne, bez refundacji NFZ. Termin potwierdzamy przy rejestracji telefonicznej.</p>
+</div></section>
+
+<section class="sec" id="faq" style="padding-top:0"><div class="wrap faq">
+  <div style="text-align:center;margin-bottom:28px">
+    <h2 class="serif">Najczęściej zadawane pytania o KORP</h2>
+    <p class="muted">Odpowiadamy na pytania rodziców, którzy rozważają badanie KORP w Bydgoszczy.</p>
+  </div>
+  <details class="faq-item" open>
+    <summary>Czym jest badanie KORP?</summary>
+    <p>KORP, czyli Karty Oceny Rozwoju Psychoruchowego, to standaryzowane narzędzie do oceny rozwoju dziecka od 1. miesiąca życia do ukończenia 9. roku życia. Pokazuje, czy rozwój jest harmonijny i zgodny z oczekiwaniami wiekowymi, oraz w których sferach dziecko radzi sobie dobrze, a w których potrzebuje wsparcia. W Propsyche KORP jest elementem procesu diagnostycznego – łączymy karty z wywiadem i obserwacją kliniczną.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Dla kogo jest badanie KORP?</summary>
+    <p>Badanie KORP jest przeznaczone dla dzieci od 1. miesiąca życia do ukończenia 9. roku życia. Wykonujemy je, gdy rozwój budzi pytania, przebiega nierównomiernie albo gdy potrzebny jest uporządkowany profil przed zaplanowaniem terapii lub wsparcia w żłobku, przedszkolu i szkole.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Ile trwa badanie KORP?</summary>
+    <p>Całość – wywiad z rodzicem i badanie dziecka – trwa zwykle około 2 godzin. Czas zależy od wieku, tempa dziecka i tego, ile sfer da się ocenić w jednym spotkaniu. Jeśli dziecko szybciej się męczy, dzielimy badanie na dwa spotkania, bez wydłużania całkowitego kosztu pakietu.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Ile spotkań potrzeba?</summary>
+    <p>Z dzieckiem pracujemy na jednym albo dwóch spotkaniach. Liczba zależy od możliwości dziecka: uwagi, zmęczenia, lęku przed nową sytuacją i wieku. Wywiad z rodzicem jest stałą częścią badania. Dokładny plan ustalamy przy rejestracji i korygujemy na bieżąco.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Jak przygotować dziecko do badania KORP?</summary>
+    <p>Nie ma specjalnych wymagań i nie trzeba niczego ćwiczyć. Dziecko powinno być wypoczęte i najedzone. Warto powiedzieć mu prosto, że przyjdzie do gabinetu, gdzie będzie się bawić i robić różne zadania z nową osobą. Przydatne są książeczka zdrowia, wcześniejsze opinie oraz informacje z żłobka, przedszkola albo szkoły.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Czy KORP wystarcza do postawienia diagnozy?</summary>
+    <p>Nie. KORP nie wystarcza sam do rozpoznania spektrum autyzmu, ADHD ani niepełnosprawności intelektualnej. Daje profil rozwoju psychoruchowego i wskazuje, gdzie warto pogłębić ocenę. Rozpoznanie kliniczne opiera się na całości: wywiadzie, obserwacji, wyniku KORP i – gdy trzeba – na innych narzędziach, takich jak ADOS-2, ADI-R, IDS-2 albo Stanford-Binet 5.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Kto przeprowadza badanie KORP w Propsyche?</summary>
+    <p>Badanie przeprowadza specjalista przeszkolony w stosowaniu KORP – psycholog pracujący z małymi dziećmi. Wynik interpretujemy w zestawieniu z wywiadem i obserwacją, a nie jako oderwany zestaw punktów. W razie potrzeby konsultujemy obraz z innymi osobami z zespołu.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Czy badanie KORP jest refundowane przez NFZ?</summary>
+    <p>W Propsyche w Bydgoszczy badanie KORP wykonujemy odpłatnie, w ramach wizyt prywatnych – nie jest refundowane przez NFZ. Aktualny koszt pakietu (wywiad z rodzicem i badanie dziecka, ok. 2 godziny) to 400 zł. Termin potwierdzamy przy rejestracji telefonicznej.</p>
+  </details>
+</div></section>
+
+<section class="sec" style="padding-top:0"><div class="wrap">
+  <div class="kicker">Powiązane tematy</div>
+  <div class="related">
+    <a class="rel" href="https://pro-psyche.pl/ados-bydgoszcz"><strong>ADOS-2 Bydgoszcz <span style="color:var(--teal)">→</span></strong><p>Obserwacja w kierunku spektrum autyzmu</p></a>
+    <a class="rel" href="https://pro-psyche.pl/adi-r-bydgoszcz"><strong>ADI-R Bydgoszcz <span style="color:var(--teal)">→</span></strong><p>Wywiad diagnostyczny z rodzicem</p></a>
+    <a class="rel" href="https://pro-psyche.pl/ids-2-bydgoszcz"><strong>IDS-2 Bydgoszcz <span style="color:var(--teal)">→</span></strong><p>Skale Inteligencji i Rozwoju, od 5. r.ż.</p></a>
+    <a class="rel" href="https://pro-psyche.pl/diagnoza-intelektu-binet-5-bydgoszcz"><strong>Stanford-Binet 5 <span style="color:var(--teal)">→</span></strong><p>Ocena intelektu i profilu poznawczego</p></a>
+    <a class="rel" href="https://pro-psyche.pl/diagnoza-psychologiczna-dzieci-i-mlodziezy"><strong>Diagnoza psychologiczna dzieci <span style="color:var(--teal)">→</span></strong><p>Szersza ścieżka diagnostyczna</p></a>
+    <a class="rel" href="https://pro-psyche.pl/diagnoza-zaburzen-ze-spektrum-autyzmu"><strong>Diagnoza spektrum autyzmu <span style="color:var(--teal)">→</span></strong><p>Proces od pytania do planu wsparcia</p></a>
+  </div>
+</div></section>
+
+<section class="final" id="kontakt">
+  <h2>Opowiedz, co niepokoi w rozwoju dziecka</h2>
+  <p>Zadzwoń – pomożemy dobrać, czy KORP jest właściwym pierwszym krokiem, czy lepiej zacząć od innej ścieżki. Bez skierowania.</p>
+  <div class="cta-row" style="justify-content:center">
+    <a class="btn-teal" href="tel:+48790219220">☎ 790 219 220</a>
+    <a class="btn-ghost" href="mailto:kontakt@pro-psyche.pl" style="background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.28)">kontakt@pro-psyche.pl</a>
+  </div>
+</section>
+
+<a class="callbar" href="tel:+48790219220">☎ Zadzwoń: 790 219 220</a>
+</body>
+</html>
